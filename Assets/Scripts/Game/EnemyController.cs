@@ -42,8 +42,16 @@ public class EnemyController : MonoBehaviour
         // SEEMS TO WORK
         if (IsOutsideBoard())
         {
-            Destroy(gameObject);
+            DestroySaveParticles(gameObject, 0.5f);
         }
+    }
+
+    void DestroySaveParticles(GameObject gameObject, float time)
+    {
+        Transform particles = gameObject.transform.GetChild(0);
+        particles.transform.parent = null;
+        Destroy(gameObject);
+        Destroy(particles.gameObject, time);
     }
 
 	void OnTriggerEnter2D(Collider2D other) 
@@ -57,7 +65,7 @@ public class EnemyController : MonoBehaviour
             // If a red hits itself it explodes
             if (gameObject.CompareTag("Red"))
             {
-                Destroy(gameObject);
+                DestroySaveParticles(gameObject, 0.5f);
                 Explode(Color.red, gameObject);
             }
             // Otherwise it doubles the speed
@@ -73,13 +81,13 @@ public class EnemyController : MonoBehaviour
             else if (gameObject.CompareTag("Gold"))
             {
                 AccelerateEnemy(2f, other.gameObject);
-                Destroy(other.gameObject);
+                DestroySaveParticles(other.gameObject, 0.5f);
                 Explode(Color.red, other.gameObject);
             }
             // Destroy the orange one and triple this one
             else if (gameObject.CompareTag("Orange"))
             {
-                Destroy(other.gameObject);
+                DestroySaveParticles(other.gameObject, 0.5f);
                 Color orange = new Color(1.0f, 0.549f, 0.0f, 1);
                 Explode(orange, other.gameObject);
                 enemyTracker.SpawnEnemy(1, gameObject.transform.position);
@@ -91,7 +99,7 @@ public class EnemyController : MonoBehaviour
             // If a blue hits a blue it explodes
             if (gameObject.CompareTag("Blue"))
             {
-                Destroy(gameObject);
+                DestroySaveParticles(gameObject, 0.5f);
                 Explode(Color.blue, gameObject);
             }
             // Otherwise it sends it back
@@ -108,7 +116,7 @@ public class EnemyController : MonoBehaviour
             {
                 AccelerateEnemy(1.2f, other.gameObject);
                 RedirectEnemy(other.gameObject);
-                Destroy(other.gameObject);
+                DestroySaveParticles(other.gameObject, 0.5f);
                 Explode(Color.blue, other.gameObject);
             }
         }
@@ -117,7 +125,7 @@ public class EnemyController : MonoBehaviour
             // If a green hits a green it explodes
             if (gameObject.CompareTag("Green"))
             {
-                Destroy(gameObject);
+                DestroySaveParticles(gameObject, 0.5f);
                 Explode(Color.green, gameObject);
             }
             // Otherwise redirect it and accelerate a little
@@ -135,7 +143,7 @@ public class EnemyController : MonoBehaviour
             else if (gameObject.CompareTag("Gold"))
             {
                 AccelerateEnemy(-1f, other.gameObject);
-                Destroy(other.gameObject);
+                DestroySaveParticles(other.gameObject, 0.5f);
                 Explode(Color.green, other.gameObject);
             }
         }
