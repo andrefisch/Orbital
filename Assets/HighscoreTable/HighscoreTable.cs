@@ -57,16 +57,13 @@ public class HighscoreTable : MonoBehaviour
             Destroy(entry);
         }
 
-        /*
-        PlayerPrefs.DeleteKey("ArcadeHighScores");
-        PlayerPrefs.DeleteKey("MasochistHighScores");
-        */
+        //PlayerPrefs.DeleteKey("ArcadeHighScores");
         string jsonString = PlayerPrefs.GetString(tableName);
         Highscores highscores = JsonUtility.FromJson<Highscores>(jsonString);
 
-        /*
         if (highscores == null) 
         {
+            /*
             // Debug.Log("Initializing ARCADE table with default values...");
             int score = 50;
             AddHighscoreEntry(tableName, score, score * 10, "10:00", "CYRUS");
@@ -78,11 +75,11 @@ public class HighscoreTable : MonoBehaviour
             AddHighscoreEntry(tableName, score, score * 10, "2:00", "ETHAN");
             score = 20;
             AddHighscoreEntry(tableName, score, score * 10, "4:00", "JAMIE");
+            */
             // Reload
             jsonString = PlayerPrefs.GetString(tableName);
             highscores = JsonUtility.FromJson<Highscores>(jsonString);
         }
-        */
 
 
         // Sort entry list by Score
@@ -134,13 +131,14 @@ public class HighscoreTable : MonoBehaviour
             Destroy(entry);
         }
 
-        // PlayerPrefs.DeleteKey(tableName);
+        //PlayerPrefs.DeleteKey(tableName);
         string jsonString = PlayerPrefs.GetString(tableName);
         Highscores highscores = JsonUtility.FromJson<Highscores>(jsonString);
 
         if (highscores == null) 
         {
             // Debug.Log("Initializing MASOCHIST table with default values...");
+            /*
             int score = 20;
             AddHighscoreEntry(tableName, score, score * 10, "2:00", "CYRUS");
             score = 12;
@@ -151,6 +149,7 @@ public class HighscoreTable : MonoBehaviour
             AddHighscoreEntry(tableName, score, score * 10, "0:30", "ETHAN");
             score = 8;
             AddHighscoreEntry(tableName, score, score * 10, "1:00", "JAMIE");
+            */
             // Reload
             jsonString = PlayerPrefs.GetString(tableName);
             highscores = JsonUtility.FromJson<Highscores>(jsonString);

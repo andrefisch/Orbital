@@ -107,7 +107,7 @@ public class EnemyController : MonoBehaviour
             {
                 AccelerateEnemy(-1f, other.gameObject);
             }
-            else if (gameObject.CompareTag("Blue"))
+            else if (gameObject.CompareTag("Green"))
             {
                 AccelerateEnemy(-1f, other.gameObject);
             }
@@ -134,7 +134,7 @@ public class EnemyController : MonoBehaviour
                 RedirectEnemy(other.gameObject);
                 AccelerateEnemy(1.2f, other.gameObject);
             }
-            else if (gameObject.CompareTag("Green"))
+            else if (gameObject.CompareTag("Blue"))
             {
                 RedirectEnemy(other.gameObject);
                 AccelerateEnemy(1.2f, other.gameObject);
